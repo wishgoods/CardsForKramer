@@ -1,0 +1,19 @@
+<div class="grid-container">
+    <div class="grid-item" *ngFor="let card of cards let i=index">
+       <div class="card-header" style="background-color:{{card['color']}}"> 
+           {{card['header']}}
+        </div>
+        <div class="text-container">
+            <div class="text-item" *ngFor="let txt of card['text']">
+                <i *ngIf="i>0" class="fa fa-angle-left" (click)="moveCard(i,'left')"></i>
+                <div class="inner-txt">{{txt}}</div>
+                <i *ngIf="i<(cards.length-1)" class="fa fa-angle-right" (click)="moveCard(i,'right')"></i>
+            </div>
+        </div>
+        <div class="card-action">
+            <button style ="background-color:white"(click)="openCardModal(card['id'])">+ Add To Card</button>
+            <i class="fa fa-trash" (click)="removeCard(card['id'])"></i>
+        </div>
+    </div>
+    <button (click)="openModal()">+ Add New Card</button>
+  </div>
